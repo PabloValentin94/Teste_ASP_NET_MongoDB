@@ -53,8 +53,10 @@ namespace Revisao_ASP_NET_MongoDB.Controllers
         }
 
         // GET: Avaliacoes/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Carros = await _context.Carros.Find(c => c.Id != null).ToListAsync();
+
             return View();
         }
 
@@ -91,6 +93,8 @@ namespace Revisao_ASP_NET_MongoDB.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Carros = await _context.Carros.Find(c => c.Id != null).ToListAsync();
 
             return View(avaliacao);
         }

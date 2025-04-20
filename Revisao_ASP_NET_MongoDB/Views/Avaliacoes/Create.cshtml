@@ -32,7 +32,13 @@
             <div class="form-group">
 
                 <label asp-for="Id_Carro" class="control-label"></label>
-                <input asp-for="Id_Carro" class="form-control" />
+                <select asp-for="Id_Carro" class="form-control">
+
+                    @foreach (Carro carro in ViewBag.Carros) {
+                        <option value="@carro.Id">@carro.Nome</option>
+                    }
+
+                </select>
                 <span asp-validation-for="Id_Carro" class="text-danger"></span>
 
             </div>
